@@ -1,6 +1,18 @@
-import {valid_nama, valid_no_telp, valid_email, apply_feedback_error, get_error_text} from './modules/cekvalidate.js';
-import {cekNama, cekTelp, cekAlamat, cekPassword, cekConfimPass, cekEmail, cekUsername} from './modules/cekForm.js';
-import {deleteData} from './modules/delete.js';
+import { valid_text, valid_nomor, valid_email, apply_feedback_error, get_error_text } from './modules/cekvalidate.js';
+import {
+	cekNama, 
+    cekTelp, 
+    cekAlamat, 
+    cekPassword, 
+    cekConfimPass, 
+    cekEmail, 
+    cekUsername, 
+    cekBank, 
+    cekNamaNas, 
+    cekNoRekening, 
+	uploadGambar
+} from './modules/cekForm.js';
+import { deleteData } from './modules/delete.js';
 import { tambahData } from './modules/tambah.js';
 import { ubahData } from './modules/ubah.js';
 
@@ -31,11 +43,11 @@ $(document).ready(function() {
 		deleteData(this, link, name);
 	});
 
-	// $('#page-petugas').on('click keyup keydown', '#dataTable_filter input', function(e){
-	// 	e.preventDefault();
-	// 	const value = $(this).val();
-	// 	console.log(value);
-	// });
+	$('#page-bank').on('click', '.hapus', function(e){
+		e.preventDefault();
+		const name = 'bank';
+		deleteData(this, link, name);
+	});
 
 	$('#tambah-petugas').ready(function(){
 		$('#nama').blur(function(e){
@@ -75,33 +87,46 @@ $(document).ready(function() {
 		$('#formUbahPetugas').submit( function(e){
 			e.preventDefault();
 			const name = 'petugas';
-			ubahData(this, link, name)
+			ubahData(this, link, name);
 		});
 
-		new AjaxUpload($('#upload-image'), {
-			action: `${link}/petugas/image`,
-			name: 'upload',
-			onSubmit: function(file, ext){
-				console.log(file);
-				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
-					// extension is not allowed
-					alert('Hanya file JPG, PNG atau GIF yang diperbolehkan');
-					return false;
-				}
-	
-			}, onComplete: function(file, response){
-				//Add uploaded file to list
-				console.log(response);
-				console.log(file);
-				if(response==="success"){
-					$('#upload-image').html('<img src="'+link+'/img/upload/'+file+'" class="img-thumbnail" alt="" width="150" /> '+file);
-					$('#image').val(file);
-				} else{
-					$('#upload-image').html('<img src="'+link+'/img/upload/noimage.png" alt="Upload" width="150"/> Failed');
-					$('#image').val(file);
-				}
-			}
+
+		$('#upload-image').click( function(e) {
+			const img = document.getElementById('image');
+			const upload = document.getElementById('upload-image');
+			uploadGambar(upload, img, link);
+		});
+		
+	});
+
+	$('#tambah-bank').ready(function() {
+		console.log('tambah');
+
+		$('#bank').blur(function(e){
+			cekBank(this);
+		});
+
+		$('#norek').blur(function(e){
+			cekNoRekening(this);
+		});
+
+		$('#nama').blur(function(e){
+			cekNamaNas(this);
+		});
+		
+		$('#formTambahBank').submit( function(e){
+			e.preventDefault();
+			const name = 'bank';
+			tambahData(this, link, name);
+		});
+
+		$('#formUbahBank').submit( function(e){
+			e.preventDefault();
+			const name = 'bank';
+			ubahData(this, link, name);
 		});
 	});
+
+	
 });
 

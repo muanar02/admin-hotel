@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group">
 							<label for="file" class="control-label col-lg-3">Foto</label>
-							<div class="col-md-12">
+							<div class="col-md-12" id="upload-box">
 								<span id="upload-image"><img src="<?= BASEURL; ?>/img/upload/<?= $image; ?>" class="img-thumbnail" alt="Upload" width="130" /></span>
 								<input type="hidden" id="image" name="image" value="" />
 							</div>

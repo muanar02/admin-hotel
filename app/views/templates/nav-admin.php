@@ -28,6 +28,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Data Petugas</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= BASEURL; ?>/bank">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Data Bank</span></a>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">

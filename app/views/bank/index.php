@@ -1,4 +1,4 @@
-<div id="page-petugas">
+<div id="page-bank">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?= $data['judul']; ?></h1>
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <a href="<?= BASEURL; ?>/petugas/tampilFormTambah" class="btn btn-primary mb-3">
+    <a href="<?= BASEURL; ?>/bank/tampilFormTambah" class="btn btn-primary mb-3">
         <i class="fas fa-plus-circle"></i> Tambah <?= $data['judul']; ?>
     </a>
 
@@ -24,29 +24,27 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Nama</th>
-                            <th>No. Telp/HP</th>
+                            <th>Bank</th>
+                            <th>No. Rekening</th>
+                            <th>Nama Nasabah</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                             $i = 1;
-                            foreach($data['petugas'] as $dt) : 
+                            foreach($data['bank'] as $dt) : 
                         ?>
                             <tr>
                                 <td><?= $i; ?></td>
-                                <td><?= $dt['username']; ?></td>
-                                <td><?= $dt['email']; ?></td>
-                                <td><?= $dt['nama']; ?></td>
-                                <td><?= $dt['no_telp']; ?></td>
+                                <td><?= $dt['bank']; ?></td>
+                                <td><?= $dt['norek']; ?></td>
+                                <td><?= $dt['nama_nas']; ?></td>
                                 <td>
-                                    <a href="<?= BASEURL; ?>/petugas/tampilFormUbah/<?= $dt['id_user']; ?>" class="btn btn-sm btn-success">
+                                    <a href="<?= BASEURL; ?>/bank/tampilFormUbah/<?= $dt['id_bank']; ?>" class="btn btn-sm btn-success">
                                         <i class="fas fa-edit fa-fw"></i>
                                     </a>
-                                    <a href="<?= BASEURL; ?>/petugas/hapus/<?= $dt['id_user']; ?>" class="btn btn-sm btn-danger hapus">
+                                    <a href="<?= BASEURL; ?>/bank/hapus/<?= $dt['id_bank']; ?>" class="btn btn-sm btn-danger hapus">
                                         <i class="fas fa-trash-alt fa-fw"></i>
                                     </a>
                                 </td>

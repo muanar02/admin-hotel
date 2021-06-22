@@ -24,4 +24,9 @@ class Login extends Controller {
             exit();
         }       
     }
+    public function logout() {
+        unset($_SESSION['username']);
+        unset($_SESSION['level']);
+        header('Location: ' . BASEURL . '/login');
+    }
 }

@@ -6,7 +6,11 @@ class App {
     protected $params = [];
 
     public function __construct() {
-        $url = $this->parseURL();
+        if(isset($_SESSION['username']) || $this->parseURL()[0] == 'login') {
+            $url = $this->parseURL();
+        } else {
+            $url[] = 'login';
+        }
 
         // controller
         if(isset($url[0])) {
@@ -19,7 +23,6 @@ class App {
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
 
-
         //method
         if(isset($url[1])) {
             if(method_exists($this->controller, $url[1])) {
@@ -27,7 +30,6 @@ class App {
                 unset($url[1]);
             }
         }
-
 
         // parameter 
         if(!empty($url)) {

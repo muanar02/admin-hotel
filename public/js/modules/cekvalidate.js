@@ -1,13 +1,15 @@
-//fungsi cek nama
-const valid_nama = (nama) => {
+//fungsi cek text
+const valid_text = (text) => {
     var pola= new RegExp(/^[a-z A-Z]+$/);
-    return pola.test(nama);
+    return pola.test(text);
 }
-//fungsi cek phone 
-const valid_no_telp = (no_telp) => {
+
+//fungsi cek nomor 
+const valid_nomor = (nomor) => {
     var pola = new RegExp(/^[0-9-+]+$/);
-    return pola.test(no_telp);
+    return pola.test(nomor);
 }
+
 //fungsi cek email
 const valid_email = (email) => {
     var pola= new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/);
@@ -31,4 +33,4 @@ const get_error_text = (textbox) => {
     return apply_feedback_error(textbox);
 }
 
-export { valid_nama, valid_no_telp, valid_email, apply_feedback_error, get_error_text };
+export { valid_text, valid_nomor, valid_email, apply_feedback_error, get_error_text };
