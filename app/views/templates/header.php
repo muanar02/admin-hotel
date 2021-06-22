@@ -24,7 +24,12 @@
     <link href="<?= BASEURL; ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <link href="<?= BASEURL; ?>/vendor/sweetalert/sweetalert.css" rel="stylesheet">
-
+    <style>
+        .form-group span#upload-image{
+            display: block;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body id="page-top">

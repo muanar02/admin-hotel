@@ -63,6 +63,7 @@
     <!-- Page level custom scripts -->
     <script src="<?= BASEURL; ?>/js/demo/datatables-demo.js"></script>
     <script src="<?= BASEURL; ?>/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="<?= BASEURL; ?>/js/ajaxupload.js"></script>
     <script type="module" src="<?= BASEURL; ?>/js/main.js"></script>
     
 </body>

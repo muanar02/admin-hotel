@@ -1,3 +1,14 @@
+<?php
+    if($data['petugas']) {
+        if($data['petugas']['foto']) {
+            $image = $data['petugas']['foto'];
+        } else {
+            $image = "noimage.png";
+        }
+    } else {
+        $image = "noimage.png";
+    }   
+?>
 
 <div id="tambah-petugas">
 
@@ -12,7 +23,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Form <?= $data['judul']; ?></h6>
         </div>
         <div class="card-body">
-            <form id="<?= $data['id']; ?>" method="POST" action="<?= BASEURL; ?>/petugas/<?= $data['link']; ?>">
+            <form id="<?= $data['id']; ?>" action="<?= BASEURL; ?>/petugas/<?= $data['link']; ?>" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group has-feedback">
@@ -52,9 +63,6 @@
                                 <span class="text-warning" ></span>
                             </div>
                         </div>
-                        
-                    </div>
-                    <div class="col-md-6">
                         <div class="form-group has-feedback">
                             <label for="nama">Nama Lengkap</label>
                             <div>
@@ -63,6 +71,8 @@
                                 <span class="text-warning" ></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group has-feedback">
                             <label for="telp">No. Telp/HP</label>
                             <div>
@@ -80,6 +90,13 @@
                                 <span class="text-warning" ></span>
                             </div>
                         </div>
+                        <div class="form-group">
+							<label for="file" class="control-label col-lg-3">Foto</label>
+							<div class="col-md-12">
+								<span id="upload-image"><img src="<?= BASEURL; ?>/img/upload/<?= $image; ?>" class="img-thumbnail" alt="Upload" width="130" /></span>
+								<input type="hidden" id="image" name="image" value="" />
+							</div>
+						</div>
                     </div>
                 </div>
                 <div class="row justify-content-center">

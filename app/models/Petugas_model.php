@@ -25,7 +25,7 @@ class Petugas_model {
     public function tambahDataPetugas($data) {
         $query = "INSERT INTO user 
                     VALUES 
-                    ('', :username, :password, :email, :nama, :no_telp, :alamat, :level, '')";
+                    ('', :username, :password, :email, :nama, :no_telp, :alamat, :level, :foto)";
         $this->db->query($query);
         $this->db->bind('username', $data['username']);
         $this->db->bind('password', $data['password']);
@@ -33,6 +33,7 @@ class Petugas_model {
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('no_telp', $data['telp']);
         $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('foto', $data['image']);
         $this->db->bind('level', 'Petugas');
         $this->db->execute();
         return $this->db->rowCount();
@@ -53,7 +54,8 @@ class Petugas_model {
                         email = :email,
                         nama = :nama,
                         no_telp = :no_telp,
-                        alamat = :alamat
+                        alamat = :alamat,
+                        foto = :foto
                     WHERE id_user = :id_user";
         $this->db->query($query);
         $this->db->bind('id_user', $data['id']);
@@ -63,6 +65,7 @@ class Petugas_model {
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('no_telp', $data['telp']);
         $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('foto', $data['image']);
         $this->db->execute();
         return $this->db->rowCount();
     }

@@ -77,6 +77,31 @@ $(document).ready(function() {
 			const name = 'petugas';
 			ubahData(this, link, name)
 		});
+
+		new AjaxUpload($('#upload-image'), {
+			action: `${link}/petugas/image`,
+			name: 'upload',
+			onSubmit: function(file, ext){
+				console.log(file);
+				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+					// extension is not allowed
+					alert('Hanya file JPG, PNG atau GIF yang diperbolehkan');
+					return false;
+				}
+	
+			}, onComplete: function(file, response){
+				//Add uploaded file to list
+				console.log(response);
+				console.log(file);
+				if(response==="success"){
+					$('#upload-image').html('<img src="'+link+'/img/upload/'+file+'" class="img-thumbnail" alt="" width="150" /> '+file);
+					$('#image').val(file);
+				} else{
+					$('#upload-image').html('<img src="'+link+'/img/upload/noimage.png" alt="Upload" width="150"/> Failed');
+					$('#image').val(file);
+				}
+			}
+		});
 	});
 });
 

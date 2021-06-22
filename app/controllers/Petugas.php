@@ -74,4 +74,17 @@ class Petugas extends Controller {
         }
     }
 
+    public function image() {
+        if ($_FILES['upload']){
+            $uploaddir = 'img/upload/';
+            $file = $uploaddir . basename($_FILES['upload']['name']);
+        
+            if (move_uploaded_file($_FILES['upload']['tmp_name'], $file)) {
+                echo "success";
+            } else {
+                echo "error";
+            }
+        }
+    }
+
 }
