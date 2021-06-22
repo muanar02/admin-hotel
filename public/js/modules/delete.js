@@ -1,4 +1,5 @@
-const deleteData = (href, link, name) => {
+const deleteData = (text, link, name) => {
+    const href = $(text).attr('href');
     swal({
         title: "Apakan anda yakin!",
         text: "Anda tidak dapat mengembalikan data ini!",

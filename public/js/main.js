@@ -1,8 +1,13 @@
+import {valid_nama, valid_no_telp, valid_email, apply_feedback_error, get_error_text} from './modules/cekvalidate.js';
+import {cekNama, cekTelp, cekAlamat, cekPassword, cekConfimPass, cekEmail, cekUsername} from './modules/cekForm.js';
 import {deleteData} from './modules/delete.js';
+import { tambahData } from './modules/tambah.js';
+import { ubahData } from './modules/ubah.js';
 
 $(document).ready(function() {
 	const link = 'http://localhost/admin/public';
 
+	//semua element dengan class text-warning akan di sembunyikan saat load
 	$('.text-warning').hide();
 	//untuk mengecek bahwa semua textbox tidak boleh kosong
 	$('input, textarea').each(function(){ 
@@ -19,49 +24,59 @@ $(document).ready(function() {
 			}
 		});
 	});
-	console.log('eeee');
+
 	$('#page-petugas').on('click', '.hapus', function(e){
 		e.preventDefault();
-        var href = $(this).attr('href');
-		deleteData(href, link, 'petugas');
-		console.log(href);
+		const name = 'petugas';
+		deleteData(this, link, name);
 	});
+
+	// $('#page-petugas').on('click keyup keydown', '#dataTable_filter input', function(e){
+	// 	e.preventDefault();
+	// 	const value = $(this).val();
+	// 	console.log(value);
+	// });
 
 	$('#tambah-petugas').ready(function(){
-		console.log('ggggg');
+		$('#nama').blur(function(e){
+			cekNama(this);
+		});
+
+		$('#telp').blur(function(){
+			cekTelp(this);
+		});
+
+		$('#alamat').blur(function(){
+			cekAlamat(this);
+		});
+
+		$('#password').blur(function(){
+			cekPassword(this);
+		});
+
+		$('#confirmPass').blur(function(){
+			cekConfimPass(this);
+		});
+
+		$('#email').blur(function(){
+			cekEmail(this);
+		});
+
+		$('#username').blur(function(){
+			cekUsername(this);
+		});
+
+		$('#formTambahPetugas').submit( function(e){
+			e.preventDefault();
+			const name = 'petugas';
+			tambahData(this, link, name);
+		});
+
+		$('#formUbahPetugas').submit( function(e){
+			e.preventDefault();
+			const name = 'petugas';
+			ubahData(this, link, name)
+		});
 	});
-
-	//fungsi cek nama
-	function valid_nama(nama) {
-		var pola= new RegExp(/^[a-z A-Z]+$/);
-		return pola.test(nama);
-	}
-	//fungsi cek phone 
-	function valid_no_telp(no_telp){
-		var pola = new RegExp(/^[0-9-+]+$/);
-		return pola.test(no_telp);
-	}
-	//fungsi cek email
-	function valid_email(email){
-		var pola= new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/);
-		return pola.test(email);
-	}
-	//menerapkan gaya validasi form bootstrap saat terjadi eror
-	function apply_feedback_error(textbox){
-		$(textbox).addClass('no-valid'); //menambah class no valid
-		$(textbox).parent().find('.text-warning').show();
-		$(textbox).closest('div').removeClass('has-success');
-		$(textbox).closest('div').addClass('has-warning');
-		$(textbox).parent().find('.form-control-feedback').removeClass('glyphicon glyphicon-ok');
-		$(textbox).parent().find('.form-control-feedback').addClass('glyphicon glyphicon-warning-sign');
-	}
-
-	//untuk mendapat eror teks saat textbox kosong, digunakan saat submit form dan blur fungsi
-	function get_error_text(textbox){
-		$(textbox).parent().find('.text-warning').text("");
-		$(textbox).parent().find('.text-warning').text("Tidak Boleh Kosong");
-		return apply_feedback_error(textbox);
-	}
-
-
 });
+

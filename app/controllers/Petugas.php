@@ -17,6 +17,7 @@ class Petugas extends Controller {
     public function tampilFormTambah() {
         $data['judul'] = 'Tambah Data Petugas';
         $data['link'] = 'tambah';
+        $data['id'] = 'formTambahPetugas';
         $data['petugas'] = '';
         $this->view('templates/header');
         if($_SESSION['level'] == 'Administrator') {
@@ -47,6 +48,7 @@ class Petugas extends Controller {
     public function tampilFormUbah($id) {
         $data['judul'] = 'Ubah Data Petugas';
         $data['link'] = 'ubah';
+        $data['id'] = 'formUbahPetugas';
         $data['petugas'] = $this->model('Petugas_model')->getPetugasById($id);
 
         $this->view('templates/header');

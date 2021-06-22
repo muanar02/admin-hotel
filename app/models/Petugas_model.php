@@ -58,7 +58,7 @@ class Petugas_model {
         $this->db->query($query);
         $this->db->bind('id_user', $data['id']);
         $this->db->bind('username', $data['username']);
-        $this->db->bind('password', $data['konfirmPass']);
+        $this->db->bind('password', $data['password']);
         $this->db->bind('email', $data['email']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('no_telp', $data['telp']);

@@ -12,34 +12,50 @@
             <h6 class="m-0 font-weight-bold text-primary">Form <?= $data['judul']; ?></h6>
         </div>
         <div class="card-body">
-            <form action="<?= BASEURL; ?>/petugas/<?= $data['link']; ?>" method="POST">
+            <form id="<?= $data['id']; ?>" method="POST" action="<?= BASEURL; ?>/petugas/<?= $data['link']; ?>">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control form-control-user"
+                            <div>
+                                <input type="text" class="form-control textbox"
                                 id="username" name="username" placeholder="Masukan Username" value="<?php if($data['petugas']) echo $data['petugas']['username']; ?>">
                                 <input type="hidden" name="id" value="<?php if($data['petugas']) echo $data['petugas']['id_user']; ?>">
+                                <i class="form-control-feedback"></i>
+                                <span class="text-warning" ></span>
+                            </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control form-control-user"
+                            <div>
+                                <input type="password" class="form-control textbox"
                                 id="password" name="password" placeholder="Masukan Password" value="<?php if($data['petugas']) echo $data['petugas']['password']; ?>">
+                                <i class="form-control-feedback"></i>
+                                <span class="text-warning" ></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="konfirmPass">Konfirmasi Password</label>
-                            <input type="password" class="form-control form-control-user"
-                                id="konfirmPass" name="konfirmPass" placeholder="Masukan Konfirmasi Password" value="<?php if($data['petugas']) echo $data['petugas']['password']; ?>">
+                        <div class="form-group has-feedback">
+                            <label for="confirmPass">Konfirmasi Password</label>
+                            <div>
+                                <input type="password" class="form-control textbox"
+                                id="confirmPass" name="confirmPass" placeholder="Masukan Konfirmasi Password" value="<?php if($data['petugas']) echo $data['petugas']['password']; ?>">
+                                <i class="form-control-feedback"></i>
+                                <span class="text-warning" ></span>
+                            </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control form-control-user"
+                            <div>
+                                <input type="email" class="form-control textbox"
                                 id="email" name="email" placeholder="Masukan Email" value="<?php if($data['petugas']) echo $data['petugas']['email']; ?>">
+                                <i class="form-control-feedback"></i>
+                                <span class="text-warning" ></span>
+                            </div>
                         </div>
                         
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="nama">Nama Lengkap</label>
                             <div>
                                 <input type="text" class="form-control textbox" id="nama" name="nama" placeholder="Masukan Nama Lengkap" value="<?php if($data['petugas']) echo $data['petugas']['nama']; ?>">
@@ -47,14 +63,22 @@
                                 <span class="text-warning" ></span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="telp">No. Telp/HP</label>
-                            <input type="number" class="form-control form-control-user"
+                            <div>
+                                <input type="text" class="form-control textbox"
                                 id="telp" name="telp" placeholder="Masukan No. Telp/HP" value="<?php if($data['petugas']) echo $data['petugas']['no_telp']; ?>">
+                                <i class="form-control-feedback"></i>
+                                <span class="text-warning" ></span>
+                            </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="alamat">Alamat</label>
-                            <textarea name="alamat" id="alamat" class="form-control" rows="4" placeholder="Masukan Alamat"><?php if($data['petugas']) echo $data['petugas']['alamat']; ?></textarea>
+                            <div>
+                                <textarea name="alamat" id="alamat" class="form-control textbox" rows="4" placeholder="Masukan Alamat"><?php if($data['petugas']) echo $data['petugas']['alamat']; ?></textarea>
+                                <i class="form-control-feedback"></i>
+                                <span class="text-warning" ></span>
+                            </div>
                         </div>
                     </div>
                 </div>
